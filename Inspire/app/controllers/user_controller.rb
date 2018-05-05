@@ -10,6 +10,7 @@ class UserController < ApplicationController
 	end
 
 	def new
+		#Just for the view
 	end
 
 	def show
@@ -17,7 +18,7 @@ class UserController < ApplicationController
 	end
 
 	def update
-
+		
 	end
 
 	def destroy
