@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UserController < ApplicationController
 	def index
 
 	end
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	end
 
 	def new
-	
+
 	end
 
 	def show
