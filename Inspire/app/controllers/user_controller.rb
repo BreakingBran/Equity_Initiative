@@ -1,25 +1,19 @@
 class UserController < ApplicationController
 	def index
-
 	end
 
 	def create
-<<<<<<< HEAD:Inspire/app/controllers/users_controller.rb
 		@user = User.new(user_params)
 
 		@user.save
 		redirect_to @user
-=======
-
->>>>>>> 90c7ec54d83e3fb35ce52f6f08a3639a2eec4f1d:Inspire/app/controllers/user_controller.rb
 	end
 
 	def new
-
 	end
 
 	def show
-
+		@user = User.find(params[:id])
 	end
 
 	def update
