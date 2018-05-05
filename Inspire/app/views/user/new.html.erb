@@ -1,33 +1,29 @@
-<p>THIS WILL BE THE NEW USER PAGE<p>
-
-<h1>New User Test - replace the code</h1>
-
-<%= form_with scope: :user, url: user_create_path, local: true do |form| %>
-  <p>
-    <%= form.label :first_name %><br>
-    <%= form.text_field :first_name %>
-  </p>
-  <p>
-    <%= form.label :last_name %><br>
-    <%= form.text_field :last_name %>
-  </p>
-
-  <p>
-    <%= form.label :username %><br>
-    <%= form.text_area :username %>
-  </p>
-
-  <p>
-    <%= form.label :password %><br>
-    <%= form.text_area :password %>
-  </p>
- 
-  <p>
-    <%= form.label :Bio %><br>
-    <%= form.text_area :bio %>
-  </p>
- 
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+  <section>
+    <h2>Inspire</h2>
+    <h3>Share your story, find inspiration</h3>
+  </section>
+  <div>
+    <h1>
+      Sign up:
+    </h1>
+    <%= form_with scope: :user, url: user_create_path, local: true do |form| %>
+      <span>
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, placeholder: "Jane", :required => true %>
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, placeholder: "Smith", :required => true %>
+      </span>
+      <p>
+        <%= form.label :username %>
+        <%= form.text_field :username, placeholder: "username", :required => true %>
+      </p>
+      <p>
+        <%= form.label :password %>
+        <%= form.password_field :password, placeholder: "password", title: "enter password here", :required => true %>
+      </p>
+      
+      <p>
+        <%= form.submit "Sign Up" %>
+      </p>
+    <% end %>
+  </div>
