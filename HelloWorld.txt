@@ -1,0 +1,7 @@
+Hello Dexter, Surien and James, this is the development branch for the website
+
+Enjoy working on this branch, make branches off of this branch to test new things, 
+
+and only push to master from this branch when we all consider it stable
+
+
