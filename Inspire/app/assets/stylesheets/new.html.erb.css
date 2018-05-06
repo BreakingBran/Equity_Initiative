@@ -21,6 +21,7 @@ h3 {
 #login {
 	padding-top: 10px;
 	padding-left: 10px;
+	padding-bottom: 5px;
 	background: linear-gradient(40deg,#5124e5,#07f261);
 	margin-top: 0px;
 	border: 1px solid #000000;

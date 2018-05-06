@@ -1,5 +1,6 @@
 body {
-	background: linear-gradient(-40deg,#5124e5,#07f261);
+/*	background: linear-gradient(-40deg,#5124e5,#07f261);*/
+	background-image: url(http://www.kitaro10.com/wp-content/uploads/2013/08/312.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -29,7 +30,8 @@ body {
 }
 #registration {
 	border-radius: 10px;
-	background-image: url(http://www.kitaro10.com/wp-content/uploads/2013/08/312.jpg);
+	/*background-image: url(http://www.kitaro10.com/wp-content/uploads/2013/08/312.jpg);*/
+	background: linear-gradient(-40deg,#5124e5,#07f261);
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 22em;
