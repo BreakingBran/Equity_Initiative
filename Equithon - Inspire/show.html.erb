@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Your post</title>
+</head>
+<body>
+<div>
+<!-- Top Task Bar -->
+</div>
+<div>
+  <h3>View this person's profile</h3>
+  <!-- Above Link to that User's profile page -->
+</div>
+<div>
+  <blockquote>
+  	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+  	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  	<!-- <%=@post.title%> -->
+  	<!-- <%=@post.message%> -->
+  	<!-- <%= "-" + @user.first_name + " " +@user.last_name%> -->
+  </blockquote>
+</div>
+<div>
+  <h3>Comments</h3>
+  <p class="comment">
+  	<!-- <%@post.comments.each do |comment|%> -->
+  	<!-- <%=comment.user.first_name + " " + comment.user.last_name%> LINK TO PERSON'S PROFILE-->
+  	<span>
+  	  <!--<%comment.message%> -->
+  	</span>
+  	<div class="reply">
+  	  <!-- <%comment.replies.each do |reply|%> -->
+  	  <!-- <%=reply.comment.user.first_name + " " + reply.comment.user.last_name%> LINK TO PERSON'S PROFILE-->
+  	  <span>
+  	  <!--<%reply.message%> -->
+  	</span>
+  	</div>
+  </p>
+</div>
+<div>
+  <form>
+  	<h2>Search by Category:</h2>
+    <div>
+      <p>
+	    <label>Category
+	      <select>
+	        <option value="0">Any</option>
+			<option value="1">Against the Crowd</option>
+			<option value="2">Challenging Decisions</option>
+			<option value="3">Equality</option>
+			<option value="4">Facing Abuse</option>
+			<option value="5">Inspirational</option>
+			<option value="6">Overcoming Barriers</option>
+			<option value="7">Survivor</option>
+			<option value="8">Under Pressure</option>
+			<option value="10">Other</option>
+		  </select>
+		</label>
+	  </p>
+	  <p>
+		<label>Keyword(s):
+		  <input type="text" placeholder="ex: discrimination">
+		</label>
+	    <button>
+	  	  Search
+		</button>
+	  </p>
+	</div>
+	</form>
+	<form>
+	  <label>Search by name or username:
+		<input type="text" name="username or name">
+	  </label>
+	  <button>
+		Search
+	  </button>
+	</form>
+</div>
+</body>
+</html>
