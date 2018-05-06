@@ -2,3 +2,18 @@
 <% if @user.bio != '' %>
 	<h3><%= @user.bio %></h3>
 <% end %>
+<%= button_to 'Edit my profile', edit_user_path(@user), :method => :get %>
+<%= button_to 'Share something new', new_user_post_path(@user), :method => :get %>
+
+<h3>My Posts</h3>
+<% @user.posts.each do |post| %>
+	<h5><%= post.title %></h5>
+	<p><%= post.message %></p>
+	<%= button_to 'Edit Post', edit_user_post_path(@user, post.id), :method => :get %>
+<% end %>
+
+
+<h3>My Comments</h3>
+<% @user.comments.each do |comment| %>
+	<blockquote><%= comment.message %></blockquote>
+<% end %>

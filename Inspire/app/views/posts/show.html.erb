@@ -7,7 +7,7 @@
 <% @comments.each do |comment| %>
 	<span>
 		<%= comment.message %>
-		<%= link_to 'Reply', reply_new_path(@user.id, comment.id) %> <br>
+		<%= button_to 'Reply', reply_new_path(@user.id, comment.id), :method => :get %> <br>
 	</span>
 	<%comment.replies.each do |reply| %>
 		<blockquote> <h5><%= reply.message %></h5> </blockquote>
@@ -24,4 +24,4 @@
         <%= form.submit "Share!" %>
     </p>
 <% end %>
-<%= link_to 'All Posts by this Author', user_posts_path(@user.id) %>
+<%= button_to 'Get more inspired', user_index_path, :method => :get %>

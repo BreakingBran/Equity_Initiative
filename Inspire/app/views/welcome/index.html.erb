@@ -1,3 +1,28 @@
-<h1>Inspire!</h1>
-<p>Login</p>
-<p>Sign Up</p>
+<link rel="stylesheet" type="text/css" href="InspireLogin.css">
+<body>
+  <h1><stronger>Inspire</stronger></h1>
+  <div>
+    <h3>Already  have an account?
+    	<%= button_to 'Sign up here!', new_user_path, :method => :get %>
+    </h3>
+  </div>
+  <div id="signup">
+  	<h2>Login:</h2>
+  	<span>
+  		<form method="get">
+  		<label>Username:
+  			<input type="text" name="User" placeholder="username" required>
+  		</label>
+  		<label>Password:
+  		  	<input type="Password" name="password" placeholder="password" pattern=".{8,32}" title="Password must be between 8 and 32 characters" required>
+  		</label>
+  		<label id="remember">
+  			Remember Me
+  		</label>
+  		</form>
+  	<%= button_to 'Sign In!', user_index_path, :method => :get %>
+  	</span>
+  </div>
+  
+</body>
+</html>
