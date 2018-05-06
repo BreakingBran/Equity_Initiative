@@ -1,3 +1,39 @@
-<h1>Inspire!</h1>
-<p>Login</p>
-<p>Sign Up</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inspire - Login</title>
+  <link rel="stylesheet" type="text/css" href="welcome.scss">
+  <link href="https://fonts.googleapis.com/css?family=IM+Fell+English:400i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+  <h1><stronger>Inspire</stronger></h1>
+  <div>
+    <h3>Already  have an account? Sign up
+      <a href="InspireSignUp.html">here!</a>
+    </h3>
+  </div>
+
+  <div id="login">
+    <h2>Login:</h2>
+  	<form method="get">
+  		<label>Username:
+  			<input type="text" name="User" placeholder="username" required>
+  		</label>
+  		<p>
+  		<label>Password:
+  		  <input type="Password" name="password" placeholder="password" pattern=".{8,32}" title="Please enter your password" required>
+  		</label>
+  		</p>
+  		<p>	
+  		<label id="remember">Remember me
+  			<input type="checkbox">
+  		</label>
+  		</p>
+  		<p>
+  		<button>Sign in</button>
+  		</p>
+  	</form>
+  </div>
+</body>
+</html>
