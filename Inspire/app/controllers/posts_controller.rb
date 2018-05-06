@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
 	def index
 		@user = User.find(params[:user_id])
-		@posts = Post.all
+		@posts = @user.posts.all
 	end
 
 	def edit
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
 	def update
 		@user = User.find(params[:user_id])
 		@post = Post.find(params[:id])
-		@post = Post.update(post_params)
+		@post = Post.update(@post.id, post_params)
 		redirect_to user_posts_path(@user.id)
 	end
 
