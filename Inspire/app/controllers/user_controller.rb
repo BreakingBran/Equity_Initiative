@@ -12,6 +12,7 @@ class UserController < ApplicationController
 	end
 
 	def new
+		#Just for the view
 	end
 
 	def show
