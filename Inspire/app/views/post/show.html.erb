@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Your post</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
 <div>
@@ -41,12 +42,12 @@
   	</div>
   </p>
 </div>
-<div>
+<div id="search">
   <form>
   	<h2>Search by Category:</h2>
     <div>
       <p>
-	    <label>Category
+	    <label>Category&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	      <select>
 	        <option value="0">Any</option>
 			<option value="1">Against the Crowd</option>
@@ -61,9 +62,9 @@
 		  </select>
 		</label>
 	  </p>
-	  <p>
+	  <p id="searchbyuser">
 		<label>Keyword(s):
-		  <input type="text" placeholder="ex: discrimination">
+		  <input type="text" placeholder="ex: discrimination" size="12">
 		</label>
 	    <button>
 	  	  Search
@@ -73,7 +74,7 @@
 	</form>
 	<form>
 	  <label>Search by name or username:
-		<input type="text" name="username or name">
+		<input type="text" name="username or name" placeholder="Jane Smith" size="10">
 	  </label>
 	  <button>
 		Search
