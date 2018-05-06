@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   post 'user', to: 'user#create', as: 'user_create'
   post '/user/:user_id/posts', to: 'posts#create', as: 'post_create'
+  post '/user/:user_id/comments', to: 'comment#create', as: 'comment_create'
+
+  get '/user/:user_id/comments/:comment_id/new', to: 'reply#new', as: 'reply_new'
+  post '/user/:user_id/comments/:comment_id/new', to: 'reply#create', as: 'reply_create'
 
   resources :user do
   	resources :posts

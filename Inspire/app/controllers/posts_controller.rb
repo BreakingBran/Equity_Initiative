@@ -18,13 +18,25 @@ class PostsController < ApplicationController
 	end
 
 	def show
+		@user = User.find(params[:user_id])
 		@post =  Post.find(params[:id])
 	end
 
 	def index
+		@user = User.find(params[:user_id])
+		@posts = Post.all
+	end
+
+	def edit
+		@user = User.find(params[:user_id])
+		@post = Post.find(params[:id])
 	end
 
 	def update
+		@user = User.find(params[:user_id])
+		@post = Post.find(params[:id])
+		@post = Post.update(post_params)
+		redirect_to user_posts_path(@user.id)
 	end
 
 	def destroy
@@ -33,5 +45,5 @@ class PostsController < ApplicationController
 	private
   		def post_params
     		params.require(:post).permit(:title, :category, :message, :verified, :num_likes)
- 		 end
+ 		end
 end

@@ -1,0 +1,10 @@
+<h1>New Reply</h1>
+<%= form_with scope: :reply, url: reply_create_path, local: true do |form| %>
+	<span>
+        <%= form.label :message %>
+        <%= form.text_field :message, placeholder: "I agree!", :required => true %> <br>
+    </span>  
+    <p>
+        <%= form.submit "Share!" %>
+    </p>
+<% end %>

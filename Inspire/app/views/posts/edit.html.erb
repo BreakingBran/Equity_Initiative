@@ -1,0 +1,18 @@
+<h1>Edit Post</h1>
+<h3>How do you want to inspire others?</h3>
+
+<%= form_with(model: [@user, @post], local: true) do |form| %>
+	<span>
+        <%= form.label :title %> <br>
+        <%= form.text_field :title, :required => true %> <br>
+        <%= form.label :category %> <br>
+        <%= form.text_field :category, :required => true %> <br>
+    </span>
+    <p>
+        <%= form.label :message %> <br>
+        <%= form.text_area :message, :required => true %> <br>
+    </p>   
+    <p>
+        <%= form.submit "Share!" %>
+    </p>
+<% end %>

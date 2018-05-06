@@ -1,0 +1,18 @@
+<h1>New Post</h1>
+<h3>How do you want to inspire others?</h3>
+
+<%= form_with scope: :post, url: post_create_path, local: true do |form| %>
+	<span>
+        <%= form.label :title %> <br>
+        <%= form.text_field :title, placeholder: "Title", :required => true %> <br>
+        <%= form.label :category %> <br>
+        <%= form.text_field :category, placeholder: "Disability", :required => true %> <br>
+    </span>
+    <p>
+        <%= form.label :message %> <br>
+        <%= form.text_area :message, placeholder: "I am amazing!", :required => true %> <br>
+    </p>   
+    <p>
+        <%= form.submit "Share!" %>
+    </p>
+<% end %>

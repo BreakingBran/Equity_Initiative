@@ -1,0 +1,27 @@
+<h1><%= @post.title %></h1>
+<h3><%= @post.category %></h3>
+<p><%= @post.message %></p>
+
+<h3>Comments:</h3>
+<% @comments = @user.comments.all %>
+<% @comments.each do |comment| %>
+	<span>
+		<%= comment.message %>
+		<%= link_to 'Reply', reply_new_path(@user.id, comment.id) %> <br>
+	</span>
+	<%comment.replies.each do |reply| %>
+		<blockquote> <h5><%= reply.message %></h5> </blockquote>
+	<% end %>
+<% end %>
+
+<h5>New Comment:</h5>
+<%= form_with(model: [@user, @user.comments.build], local: true) do |form| %>
+	<span>
+        <%= form.label :message %>
+        <%= form.text_field :message, placeholder: "What a great story!", :required => true %> <br>
+    </span>
+    <p>
+        <%= form.submit "Share!" %>
+    </p>
+<% end %>
+<%= link_to 'All Posts by this Author', user_posts_path(@user.id) %>

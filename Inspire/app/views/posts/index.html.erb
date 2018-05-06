@@ -1,0 +1,10 @@
+<h1>Posts by:</h1>
+<span><%= @user.first_name + ' ' + @user.last_name%> </span>
+<% @posts.each do |post| %>
+	<h3><%= post.title %></h3>
+	<h5><%= post.category %></h5>
+	<blockquote><%= post.message %></blockquote>
+	<h5><%= post.user.first_name + ' ' + post.user.last_name %></h5>
+<% end %>
+
+<%= link_to 'New Post by this Author', new_user_post_path(@user.id) %>
