@@ -1,1 +1,24 @@
-<p>THIS WILL BE THE NEW USER PAGE<p>
+  <section>
+    <h2>Inspire</h2>
+    <h3>Share your story, find inspiration</h3>
+  </section>
+  <div>
+    <h1>
+      Sign up:
+    </h1>
+    <%= form_with scope: :user, url: user_create_path, local: true do |form| %>
+      <span>
+        <%= form.label :first_name %> <br>
+        <%= form.text_field :first_name, placeholder: "Jane", :required => true %>
+        <%= form.label :last_name %> <br>
+        <%= form.text_field :last_name, placeholder: "Smith", :required => true %>
+      </span>
+      <p>
+        <%= form.label :message %>
+        <%= form.text_area :message, placeholder: "I am amazing!", :required => true %>
+      </p>
+      <p>
+        <%= form.submit "Sign Up" %>
+      </p>
+    <% end %>
+  </div>
