@@ -1,5 +1,7 @@
 class UserController < ApplicationController
 	def index
+		#temporary for debgging can't actually have a way to show all users
+		@users = User.all
 	end
 
 	def create
@@ -16,8 +18,8 @@ class UserController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
-	def update
-
+	def edit
+		@user = User.find(params[:id])
 	end
 
 	def destroy
