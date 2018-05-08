@@ -8,15 +8,20 @@
     </h1>
     <%= form_with scope: :user, url: user_create_path, local: true do |form| %>
       <span>
-        <%= form.label :first_name %> <br>
+        <%= form.label :first_name %>
         <%= form.text_field :first_name, placeholder: "Jane", :required => true %>
-        <%= form.label :last_name %> <br>
+        <%= form.label :last_name %>
         <%= form.text_field :last_name, placeholder: "Smith", :required => true %>
       </span>
       <p>
-        <%= form.label :message %>
-        <%= form.text_area :message, placeholder: "I am amazing!", :required => true %>
+        <%= form.label :username %>
+        <%= form.text_field :username, placeholder: "username", :required => true %>
       </p>
+      <p>
+        <%= form.label :password %>
+        <%= form.password_field :password, placeholder: "password", title: "enter password here", :required => true %>
+      </p>
+      
       <p>
         <%= form.submit "Sign Up" %>
       </p>
