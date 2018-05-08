@@ -1,12 +1,19 @@
-<link rel="stylesheet" type="text/css" href="InspireLogin.css">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inspire - Login</title>
+  <link rel="stylesheet" type="text/css" href="../../stylesheets/welcome.css">
+  <link href="https://fonts.googleapis.com/css?family=IM+Fell+English:400i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
 <body>
   <h1><stronger>Inspire</stronger></h1>
   <div>
-    <h3>Already  have an account?
+    <h3>Don't have an account?
     	<%= button_to 'Sign up here!', new_user_path, :method => :get %>
     </h3>
   </div>
-  <div id="signup">
+  <div id="login">
   	<h2>Login:</h2>
   	<span>
   		<form method="get">
@@ -16,9 +23,11 @@
   		<label>Password:
   		  	<input type="Password" name="password" placeholder="password" pattern=".{8,32}" title="Password must be between 8 and 32 characters" required>
   		</label>
-  		<label id="remember">
-  			Remember Me
-  		</label>
+  		<p> 
+      <label id="remember">Remember me
+        <input type="checkbox">
+      </label>
+      </p>
   		</form>
   	<%= button_to 'Sign In!', user_index_path, :method => :get %>
   	</span>
