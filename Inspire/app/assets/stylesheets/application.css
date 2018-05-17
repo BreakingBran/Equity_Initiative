@@ -1,4 +1,4 @@
-/*
+/*/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -15,10 +15,22 @@
  */
 
 body {
-	/*background: linear-gradient(-40deg,#5124e5,#07f261);*/
-	background-image: url(http://www.kitaro10.com/wp-content/uploads/2013/08/312.jpg);
+	/*background: linear-gradient(-40deg,#5124e5,#07f261); */
+	background-color: #F4F8FC;
 	background-repeat: no-repeat;
 	background-size: cover;
+	font-family: 'Playfair Display', serif;
+} 
+/*
+bad style to do this change 
+
+h1 {
+	color: #F7FBFF;
+}
+
+#horizontal_line_bar {
+	font-size: 10px;
+	background-color: #217282;
 }
 .comment {
 	background-color: #c9d8ce;
@@ -27,7 +39,7 @@ body {
 	padding: 3.5px;
 }
 .reply {
-	background: linear-gradient(40deg,#ffac14,#07f261);
+	background-color: #F0F3F5;
 	border: 0.5px solid rgb(255,255,255);
 	border-radius: 5px;
 	padding: 3.5px;
@@ -46,8 +58,9 @@ body {
 }
 #registration {
 	border-radius: 10px;
-	/*background-image: url(http://www.kitaro10.com/wp-content/uploads/2013/08/312.jpg);*/
+	background-image: url(http://www.kitaro10.com/wp-content/uploads/2013/08/312.jpg);
 	background: linear-gradient(-40deg,#5124e5,#07f261);
+	background-color: #F0F3F5;
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 22em;
@@ -80,4 +93,4 @@ body {
 }
 #haveacct {
 	float: right;
-}
+}*/

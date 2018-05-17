@@ -1,11 +1,11 @@
-body {
+/*body {
 	font-size: 20px;
-	background: url(https://img00.deviantart.net/d0d1/i/2010/093/9/4/a_fiery_sky_by_sarahxjane.png);
-	/*Please note we do not take credit for the taking of this photo*/
+	background-color: '#0B7A75';
+	/*Please note we do not take credit for the taking of this photo
 	background-size: cover;
 	background-repeat: no-repeat;
 }
-h1 {
+#website {
 	font-family: IM Fell English;
 	text-align: center;
 	color: #FFFFFF;
@@ -22,7 +22,7 @@ h3 {
 	padding-top: 10px;
 	padding-left: 10px;
 	padding-bottom: 5px;
-	background: linear-gradient(40deg,#5124e5,#07f261);
+	background-color: #F0F3F5;
 	margin-top: 0px;
 	border: 1px solid #000000;
 	border-radius: 10px 25px 20px;
@@ -33,4 +33,4 @@ form label {
 }
 #remember {
 	font-size: 14px;
-}
+} */

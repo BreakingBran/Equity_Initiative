@@ -1,6 +1,6 @@
-body {
-/*	background: linear-gradient(-40deg,#5124e5,#07f261);*/
-	background-image: url(http://www.kitaro10.com/wp-content/uploads/2013/08/312.jpg);
+/*body {
+	background: linear-gradient(-40deg,#5124e5,#07f261);
+	background-color: #9AD5D1;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -11,7 +11,8 @@ body {
 	padding: 3.5px;
 }
 .reply {
-	background: linear-gradient(40deg,#ffac14,#07f261);
+    background: linear-gradient(40deg,#ffac14,#07f261);
+	background-color: #F0F3F5;
 	border: 0.5px solid rgb(255,255,255);
 	border-radius: 5px;
 	padding: 3.5px;
@@ -30,8 +31,9 @@ body {
 }
 #registration {
 	border-radius: 10px;
-	/*background-image: url(http://www.kitaro10.com/wp-content/uploads/2013/08/312.jpg);*/
+	background-image: url(http://www.kitaro10.com/wp-content/uploads/2013/08/312.jpg);
 	background: linear-gradient(-40deg,#5124e5,#07f261);
+	background-color: #F0F3F5;
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 22em;
@@ -54,9 +56,10 @@ body {
 	margin-right: 5em;
 }
 #inspire {
-	font-family: IM Fell English;
+	font-family: 'Playfair Display', serif;
+	-family: IM Fell English; 
 	font-size: 3.5em;
-	padding: 0px;
+	padding: 0px; 
 }
 #motto {
 	font-family: Roboto;
@@ -64,4 +67,4 @@ body {
 }
 #haveacct {
 	float: right;
-}
+} */

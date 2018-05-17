@@ -1,35 +1,66 @@
 body {
 	font-size: 20px;
-	background: url(https://img00.deviantart.net/d0d1/i/2010/093/9/4/a_fiery_sky_by_sarahxjane.png);
+	background-color: #A7E8E3;
+	font-family: 'Playfair Display', serif;
 	/*Please note we do not take credit for the taking of this photo*/
 	background-size: cover;
 	background-repeat: no-repeat;
+	color: #F4F8FC;
 }
-h1 {
-	font-family: IM Fell English;
+p {
+	font-family: 'Playfair Display', serif;
+	font-size: 1.5em;
+	color: #000816;
+}
+
+#container {
+	width: 35%;
+	margin: auto;
+}
+
+#header {
+	color: #38393a;
 	text-align: center;
-	color: #FFFFFF;
+	font-size: 70px;
+	border-collapse: true;
+	/* change from px to relative */
+	margin-top: 10px;
+	margin-bottom: 10px;
+} 
+
+#website_title {
+	/*#A7E8E3*/
+	background-color: #F4F8FC;
+	padding: 5px;
+	border: 6px solid #f4424b;
+	position: relative;
+}
+/* Bottom Border - note play around with dimensions */
+#website_title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  height: 100px;
+  width: 100%;
+  /*border-bottom: 30px solid #f4424b; */
 }
 h2 {
-	color: #FFFFFF;
+	color: #000816;
 }
 h3 {
-	color: rgba(255,255,255,0.8);
+	color: #000816;
 	text-align: right;
 	font-size: 70%;
 }
 #login {
 	padding-top: 10px;
 	padding-left: 10px;
-	background: linear-gradient(40deg,#5124e5,#07f261);
 	margin-top: 0px;
-	border: 1px solid #000000;
-	border-radius: 10px 25px 20px;
-	opacity: 0.7;
 }
-form label {
-	font-family: Roboto;
-}
+
 #remember {
 	font-size: 14px;
 }
