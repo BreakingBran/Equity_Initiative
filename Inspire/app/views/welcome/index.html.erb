@@ -3,38 +3,60 @@
 <head>
   <title>Inspire - Login</title>
   <link rel="stylesheet" type="text/css" href="../../stylesheets/welcome.css">
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
 </head>
 <body>
-  <div id = "body">
-    <div id = "container">
-      <div id = "website_title">
-        <h5 id = "header">Inspire</h5>
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-light m-navbar">
+    <a class="navbar-brand" href="#">Inspire</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Top Stories</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <label id="login_form"><input class="form-control mr-sm-2" type="text" placeholder="Username"name="usenanme"></label>
+        <label id="login_form"><input class="form-control mr-sm-2" type="text" placeholder="Password"name="usenanme"></label>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+      </form>
     </div>
+  </nav>
+  <div id = "body">
     <div id="login">
-      <p>Login:</p>
-      <span>
+      <!--<span>
         <form method="get">
-          <label>Username:
+          <label id="username">Username:
             <input type="text" name="User" placeholder="username" required>
           </label>
-          <label>Password:
+          <label id="password">Password:
             <input type="Password" name="password" placeholder="password" pattern=".{8,32}" title="Password must be between 8 and 32 characters" required>
           </label>
           <label id="remember">Remember me
             <input type="checkbox">
           </label>
-      </form>
-      <%= button_to 'Sign In!', user_index_path, :method => :get %>
+        </form>
+      <%#= button_to 'Sign In!', user_index_path, :method => :get %> 
       <div id="signup">
         <h3>Don't have an account?
-          <%= button_to 'Sign up here!', new_user_path, :method => :get %>
+          <%#= button_to 'Sign up here!', new_user_path, :method => :get %>
         </h3>
       </div>
-      </span>
+      </span> -->
     </div>
+  </div>
+
+  <div class="jumbotron custom-jumbotron">
+    <h1 class="display-4">Welcome Explorer!</h1>
+    <p class="lead">We've all got a story to share, to <strong>Inspire</strong></p>
+    <hr class="my-4">
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role="button">Get Inspired</a>
+    </p>
   </div>
   
 </body>
