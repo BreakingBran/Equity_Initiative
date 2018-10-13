@@ -18,8 +18,14 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:user_id])
-		@post =  Post.find(params[:id])
+		if params[:username]
+			@user = User.find_by_username(params[:username])
+			@post = @user.posts.find_by_title(params[:post_title])
+		else
+			# To support old compatibility
+			@user = User.find(params[:user_id])
+			@post = Post.find(params[:id])
+		end
 	end
 
 	def index

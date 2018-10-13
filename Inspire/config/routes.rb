@@ -5,13 +5,15 @@ Rails.application.routes.draw do
   # Welcome Page
   get 'welcome/index', to: 'welcome#index'
   get 'welcome', to: 'welcome#index'
+  get '/stories', to: 'welcome#stories'
 
   # User
-  get '/:username', to: 'user#show'
-  get '/:username/myprofile', to: 'user#index'
+  get '/profile/:username', to: 'user#show'
+  get '/profile/:username/myprofile', to: 'user#show'
+  get '/login', to: 'user#login'
 
   # Posts
-  get '/:username/:post_title', to: 'posts#show'
+  get '/post/:username/:post_title', to: 'posts#show'
 
   # Crud Routing
 

@@ -1,6 +1,10 @@
-<h1><%= @post.title %></h1>
-<h3><%= @post.category %></h3>
-<p><%= @post.message %></p>
+<% if @post.present? %>
+	<h1><%= @post.title %></h1>
+	<h3><%= @post.category %></h3>
+	<p><%= @post.message %></p>
+<% else %>
+	<h1>Unfortunately we cannot find this post</h1>
+<% end %>
 
 <h3>Comments:</h3>
 <% @comments = @user.comments.all %>

@@ -1,10 +1,12 @@
 class UserController < ApplicationController
+
 	def index
 		#temporary for debgging can't actually have a way to show all users
 		@users = User.all
 	end
 
 	def create
+		# Needs to be modified
 		@user = User.new(user_params)
 
 		@user.save
