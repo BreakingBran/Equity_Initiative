@@ -16,7 +16,14 @@ class UserController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:id])
+		# Find User
+		if (params[:username])
+			Rails.logger.debug(params[:username])
+			@user = User.find_by_username(params[:username])
+		else
+			@user = User.find(params[:id])
+		end
+
 	end
 
 	def edit
