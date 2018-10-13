@@ -84,3 +84,15 @@ h3 {
 #password {
 	color: #1a3868;
 }
+
+#main_content {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+h1 {
+	color: red;
+}
+
+#top_stories {
+	color: red;
+}

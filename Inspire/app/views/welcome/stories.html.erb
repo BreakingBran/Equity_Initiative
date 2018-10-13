@@ -1,0 +1,45 @@
+<% stylesheet_link_tag "welcome.css" %>
+<head>
+	<link rel="stylesheet" type="text/css" href="../../stylesheets/welcome.css">
+</head>
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-light m-navbar">
+  <a class="navbar-brand" href="#">Inspire</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Top Stories</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <label><input class="form-control mr-sm-2" type="text" placeholder="Category"name="categor"></label>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<!-- End Nav Bar -->
+
+<div class="container">
+	<% if @posts.present? %>
+		<h1 id="top_stories">Top Stories</h1>
+    <br>
+    <% @posts.each do |post| %>
+      <h3><%= link_to post.title, post_show_path_url(username: post.user.username, post_title: post.title) %></h3>
+      
+      <!-- Add user Image -->
+      <span>
+        <%= link_to post.user.first_name + ' ' + post.user.last_name, user_show_path_url(username: post.user.username) %> | 
+        <%= post.category.present? ? post.category : 'story' %>
+      </span>
+      <p><%= post.message %></p>
+      <hr>
+    <% end %>
+	<% else %>
+		<h1>Hmmm... Something seems wrong</h1>
+		<p>Seems like we can find any of these posts at the moment, hang tight!</p>
+	<% end %>
+</div>

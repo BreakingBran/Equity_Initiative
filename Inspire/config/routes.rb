@@ -8,12 +8,12 @@ Rails.application.routes.draw do
   get '/stories', to: 'welcome#stories'
 
   # User
-  get '/profile/:username', to: 'user#show'
+  get '/profile/:username', to: 'user#show', as: 'user_show_path'
   get '/profile/:username/myprofile', to: 'user#show'
   get '/login', to: 'user#login'
 
   # Posts
-  get '/post/:username/:post_title', to: 'posts#show'
+  get '/post/:username/:post_title', to: 'posts#show', as: 'post_show_path'
 
   # Crud Routing
 
