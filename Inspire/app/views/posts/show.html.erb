@@ -1,31 +1,64 @@
-<% if @post.present? %>
-	<h1><%= @post.title %></h1>
-	<h3><%= @post.category %></h3>
-	<p><%= @post.message %></p>
-<% else %>
-	<h1>Unfortunately we cannot find this post</h1>
-<% end %>
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-light m-navbar">
+  <a class="navbar-brand" href="/welcome">Inspire</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<h3>Comments:</h3>
-<% @comments = @user.comments.all %>
-<% @comments.each do |comment| %>
-	<span>
-		<%= comment.message %>
-		<%= button_to 'Reply', reply_new_path(@user.id, comment.id), :method => :get %> <br>
-	</span>
-	<%comment.replies.each do |reply| %>
-		<blockquote> <h5><%= reply.message %></h5> </blockquote>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Top Stories</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <label><input class="form-control mr-sm-2" type="text" placeholder="Category"name="categor"></label>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<!-- End Nav Bar -->
+
+<div class="container">
+	<% if @post.present? %>
+    <!-- Jumbotron -->
+    <div class="jumbotron custom-jumbotron">
+      <h1 class="display-4"><%= @post.title %></h1>
+      <hr>
+      <p><%= @post.category %></p>
+      <p class="lead"><%= 'Shared by: ' + @user.first_name + ' ' + @user.last_name %></p>
+    </div>
+    <!-- End Jumbotron -->
+
+    <!-- Message -->
+		<p><%= @post.message %></p>
+
+    <!-- Comments -->
+    <h3>Comments:</h3>
+    <% @comments = @user.comments.all %>
+    <% @comments.each do |comment| %>
+      <span>
+        <%= comment.user.first_name + comment.user.last_name %>
+        <blockquote>| <%= comment.message %></blockquote>
+        <br>
+      </span>
+    <% end %>
+
+    <h5>New Comment:</h5>
+    <%= form_with(model: [@user, @user.comments.build], local: true) do |form| %>
+      <span>
+            <%= form.label :message %>
+            <%= form.text_field :message, placeholder: "What a great story!", :required => true %> <br>
+            <%= hidden_field_tag 'post_title', @post.title %>
+        </span>
+        <p>
+            <%= form.submit "Share!" %>
+        </p>
+    <% end %>
+    <%= button_to 'Get more inspired', stories_path, :method => :get %>
+    
+  <% else %>
+    <h1>Unfortunately we cannot find this post</h1>
 	<% end %>
-<% end %>
+</div>
 
-<h5>New Comment:</h5>
-<%= form_with(model: [@user, @user.comments.build], local: true) do |form| %>
-	<span>
-        <%= form.label :message %>
-        <%= form.text_field :message, placeholder: "What a great story!", :required => true %> <br>
-    </span>
-    <p>
-        <%= form.submit "Share!" %>
-    </p>
-<% end %>
-<%= button_to 'Get more inspired', user_index_path, :method => :get %>

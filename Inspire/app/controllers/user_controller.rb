@@ -10,7 +10,8 @@ class UserController < ApplicationController
 		@user = User.new(user_params)
 
 		@user.save
-		redirect_to @user
+    # redirect_to welcome_index
+    redirect_to stories_path
 	end
 
 	def new
@@ -19,6 +20,9 @@ class UserController < ApplicationController
 
 	def show
 		# Find User
+
+    # Check if logged in
+    @logged_in = true
 		if (params[:username])
 			Rails.logger.debug(params[:username])
 			@user = User.find_by_username(params[:username])
@@ -45,6 +49,6 @@ class UserController < ApplicationController
 
 	private
   		def user_params
-    		params.require(:user).permit(:first_name, :last_name, :usename, :password, :bio)
- 		 end
+			params.require(:user).permit(:usename, :password, :bio)
+		end
 end

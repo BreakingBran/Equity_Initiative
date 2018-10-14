@@ -4,7 +4,7 @@
 </head>
 <!-- Nav Bar -->
 <nav class="navbar navbar-expand-lg navbar-light m-navbar">
-  <a class="navbar-brand" href="#">Inspire</a>
+  <a class="navbar-brand" href="/welcome">Inspire</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,6 +26,7 @@
 <div class="container">
 	<% if @posts.present? %>
 		<h1 id="top_stories">Top Stories</h1>
+    <%= button_to "Have something to share?", new_user_post_url(user_id: @user.id), method: :get %>
     <br>
     <% @posts.each do |post| %>
       <h3><%= link_to post.title, post_show_path_url(username: post.user.username, post_title: post.title) %></h3>

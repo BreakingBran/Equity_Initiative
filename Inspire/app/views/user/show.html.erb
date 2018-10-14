@@ -1,24 +1,45 @@
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-light m-navbar">
+  <a class="navbar-brand" href="/welcome">Inspire</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Top Stories</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <label><input class="form-control mr-sm-2" type="text" placeholder="Category"name="categor"></label>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<!-- End Nav Bar -->
+
 <% if @user.present? %>
-<!-- Need to Check if user is logged in -->
-	<h1>Hey there <%= @user.first_name + ' ' + @user.last_name %>!</h1>
-	<% if @user.bio != '' %>
-		<h3><%= @user.bio %></h3>
-	<% end %>
-	<%= button_to 'Edit my profile', edit_user_path(@user), :method => :get %>
-	<%= button_to 'Share something new', new_user_post_path(@user), :method => :get %>
-
-	<h3>My Posts</h3>
-	<% @user.posts.each do |post| %>
-		<h5><%= post.title %></h5>
-		<p><%= post.message %></p>
-		<%= button_to 'Edit Post', edit_user_post_path(@user, post.id), :method => :get %>
-	<% end %>
-
-
-	<h3>My Comments</h3>
-	<% @user.comments.each do |comment| %>
-		<blockquote><%= comment.message %></blockquote>
-	<% end %>
+  <div class="container">
+    <!-- User Image -->
+    <h1><%= @user.first_name + ' ' + @user.last_name %></h1>
+    <% if @logged_in %>
+      <%= button_to 'Edit my profile', edit_user_path(@user), :method => :get %>
+    <% end %>
+    <br>
+    <% if @user.bio != '' %>
+      <h3><%= @user.bio %></h3>
+    <% end %>
+    <br>
+    <!-- Posts -->
+    <h2>Posts by: <%= @user.first_name %></h2>
+    <br>
+    <% @user.posts.each do |post| %>
+      <h5><%= link_to post.title, post_show_path_url(username: post.user.username, post_title: post.title) %></h5>
+      <p><%= post.message %></p>
+      <hr>
+    <% end %>
+  </div>
 <% else %>
-	<h1>We Unfortunately could not find this user</h1>
+  <h1>We Unfortunately could not find this user</h1>
 <% end %>

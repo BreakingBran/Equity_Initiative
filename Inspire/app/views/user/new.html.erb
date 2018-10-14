@@ -1,4 +1,54 @@
-<!DOCTYPE html>
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-light m-navbar">
+  <a class="navbar-brand" href="/welcome">Inspire</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Top Stories</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <label><input class="form-control mr-sm-2" type="text" placeholder="Category"name="categor"></label>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<!-- End Nav Bar -->
+
+<div class="container">
+  <h1>
+    Sign up:
+  </h1>
+  <%= form_with scope: :user, url: user_create_path, local: true do |form| %>
+    <%= form.label :first_name %>:
+    <%= form.text_field :first_name, placeholder: "Jane", :required => true %> <br>
+    <%= form.label :last_name %>:
+    <%= form.text_field :last_name, placeholder: "Smith", :required => true %> <br>
+    <%= form.label :username %>
+    <%= form.text_field :username, placeholder: "username", :required => true %> <br>
+    <%= form.label :password %>
+    <%= form.password_field :password, placeholder: "password", title: "enter password here", :required => true %>
+    <p>
+      <%= form.submit "Sign Up" %>
+    </p>
+  <% end %>
+
+  <h4>
+    Already have an account? <%= button_to 'Click here to login!', welcome_path, :method => :get %>
+  </h4>
+</div>
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>Inspire - Sign up</title>
@@ -6,13 +56,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="main.css">
-</head>
-<body>
-  <section id="topbar">
-    <p id="inspire">Inspire</p>
-    <p id="motto">Share your story, find inspiration</p>
-  </section>
-  <p></p>
+</head> -->
  <!-- <div id="registration">
     <h1>
       Sign up:
@@ -53,52 +97,3 @@
       </p>
     </form>
 </div> -->
-<div id='registration'>
-  <!-- <section>
-    <h2>Inspire</h2>
-    <h3>Share your story, find inspiration</h3>
-  </section> -->
-  <div>
-    <h1>
-      Sign up:
-    </h1>
-    <%= form_with scope: :user, url: user_create_path, local: true do |form| %>
-      <span>
-        <%= form.label :first_name %>:
-        <%= form.text_field :first_name, placeholder: "Jane", :required => true %> <br>
-        <%= form.label :last_name %>:
-        <%= form.text_field :last_name, placeholder: "Smith", :required => true %> <br>
-        <label>Username:
-          <input type="text" name="username" placeholder="username" required=""> <br>
-        </label>
-        <label>Password:
-          <input type="Password" name="rep password" placeholder="password" title="Please enter the same password as above" required=""> <br>
-        </label>
-        <label>Confirm Password:
-          <input type="Password" name="rep password" placeholder="password" title="Please enter the same password as above" required=""> <br>
-        </label>
-      </span>
-      <p>
-        <%= form.label :username %>
-        <%= form.text_field :username, placeholder: "username", :required => true %>
-      </p>
-      <p>
-        <%= form.label :password %>
-        <%= form.password_field :password, placeholder: "password", title: "enter password here", :required => true %>
-      </p>
-      
-      <p>
-        <%= form.submit "Sign Up" %>
-      </p>
-    <% end %>
-  </div>
-
-</div>
-
-  <p id="haveacct">
-    <h4>
-      Already have an account? <%= button_to 'Click here to login!', welcome_path, :method => :get %>
-    </h4>
-  </p>
-</body>
-</html>

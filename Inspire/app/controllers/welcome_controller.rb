@@ -7,6 +7,8 @@ class WelcomeController < ApplicationController
 
   def stories
     # Check if logged in
+    # Change to logged in user
+    @user = User.last
     @posts = Post.order(:num_likes).first(10)
   end
 end
