@@ -23,8 +23,7 @@
       <% end %>
     </ul>
     <%= form_with scope: :filter, url: stories_filter_path, method: :get, html: {class: 'form-inline my-2 my-lg-0'} do |f| %>
-      <%= f.text_field :filter_string, required: true, placeholder: 'Category', class: 'form-control mr-sm-2', required: true %>
-
+      <%= f.text_field :filter_string, required: true, placeholder: 'Keyword', class: 'form-control mr-sm-2', required: true %>
       <%= f.submit "Search", class: "btn btn-outline-success" %>
     <% end %>
   </div>
@@ -32,7 +31,9 @@
 <!-- End Nav Bar -->
 
 <div class="container">
-  <%= button_to "Have something to share?", new_post_path(username: current_user.username), method: :get, class: "btn btn-outline-primary float-right" %>
+  <% if logged_in? %>
+    <%= button_to "Have something to share?", new_post_path(username: current_user.username), method: :get, class: "btn btn-outline-primary float-right" %>
+  <% end %>
 	<% if @posts.present? %>
 		<h1 id="top_stories">Top Stories</h1>
     <br>

@@ -1,63 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Inspire - Login</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../../stylesheets/welcome.css">
-</head>
-<body>
-  <!-- Nav Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light m-navbar">
-    <a class="navbar-brand" href="/welcome">Inspire</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-light m-navbar">
+  <a class="navbar-brand" href="/welcome">Inspire</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <% if logged_in? %>
-          <li class="nav-item">
-            Hey <%= current_user.first_name %>! | <%= link_to 'Log out', logout_path, method: :delete %>
-            | <%= link_to 'View Profile', user_show_path_url(username: current_user.username) %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to 'Log in', root_path %>
-          </li>
-        <% end %>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% if logged_in? %>
         <li class="nav-item">
-          <a class="nav-link" href="/stories">Top Stories</a>
+          Hey <%= current_user.first_name %>! | <%= link_to 'Log out', logout_path, method: :delete %>
+          | <%= link_to 'View Profile', user_show_path_url(username: current_user.username) %>
         </li>
-      </ul>
-      <%= form_with scope: :session, url: login_path, html: {class: 'form-inline my-2 my-lg-0'} do |f| %>
-        <%= f.label :username %>
-        <%= f.text_field :username, class: 'form-control mr-sm-2', required: true %>
-
-        <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control mr-sm-2', required: true %>
-
-        <%= f.submit "Log in", class: "btn btn-primary" %>
       <% end %>
-    </div>
-  </nav>
-  <!-- End Nav Bar -->
+      <li class="nav-item">
+        <a class="nav-link" href="/stories">Top Stories</a>
+      </li>
+    </ul>
+    <%= form_with scope: :session, url: login_path, html: {class: 'form-inline my-2 my-lg-0'} do |f| %>
+      <%= f.label :username %>
+      <%= f.text_field :username, class: 'form-control mr-sm-2', required: true %>
 
-  <!-- Jumbotron -->
-  <div class="jumbotron custom-jumbotron">
-    <h1 class="display-4">Welcome Explorer!</h1>
-    <p class="lead">We've all got a story to share, to <strong>Inspire</strong></p>
-    <p>
-      Inspire is a place for people to share their experiences in a positive community! It's a place for people to learn, and grow and most of all be <strong>inspired</strong> from others!
-    </p>
-    <p class="lead">Ready to Join?</p>
-    <hr class="my-4">
-    <p class="lead">
-      <!-- <%#= button_to 'Sign up', new_user_path, :method => :get %>  this is the preferred way but for css styling-->
-      <a class="btn btn-primary btn-lg" href="/user/new" role="button">Sign Up</a>
-    </p>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control mr-sm-2', required: true %>
+
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <!-- End Jumbotron -->
-  
-</body>
-</html>
+</nav>
+<!-- End Nav Bar -->
+
+<!-- Jumbotron -->
+<div class="jumbotron custom-jumbotron">
+  <h1 class="display-4">Welcome Explorer!</h1>
+  <p class="lead">We've all got a story to share, to <strong>Inspire</strong></p>
+  <p>
+    Inspire is a place for people to share their experiences in a positive community! It's a place for people to learn, and grow and most of all be <strong>inspired</strong> from others!
+  </p>
+  <p class="lead">Ready to Join?</p>
+  <hr class="my-4">
+  <p class="lead">
+    <!-- <%#= button_to 'Sign up', new_user_path, :method => :get %>  this is the preferred way but for css styling-->
+    <a class="btn btn-primary btn-lg" href="/user/new" role="button">Sign Up</a>
+  </p>
+</div>
+<!-- End Jumbotron -->

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   # API Logic
   get '/stories/filter', to: 'welcome#filter', as: 'stories_filter'
+  put '/addlike/:post_title', to: 'posts#addlike', as: 'add_like'
 
   # Support CRUD operations
   resources :user do

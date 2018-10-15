@@ -21,8 +21,7 @@
       </li>
     </ul>
     <%= form_with scope: :filter, url: stories_filter_path, method: :get, html: {class: 'form-inline my-2 my-lg-0'} do |f| %>
-      <%= f.text_field :filter_string, required: true, placeholder: 'Category', class: 'form-control mr-sm-2', required: true %>
-
+      <%= f.text_field :filter_string, required: true, placeholder: 'Keyword', class: 'form-control mr-sm-2', required: true %>
       <%= f.submit "Search", class: "btn btn-outline-success" %>
     <% end %>
   </div>
@@ -42,8 +41,16 @@
     </div>
     <!-- End Jumbotron -->
 
+    <!-- Likes -->
+    <div class='likes_container'>
+      <%= @post.num_likes.to_s + (@post.num_likes == 1 ? ' Like' : ' Likes') %><br>
+      <%= link_to 'Inspired? Leave a like!', add_like_path(post_title: @post.title), method: :put %>
+    </div>
+
     <!-- Message -->
+    <hr>
 		<p><%= @post.message %></p>
+    <hr>
 
     <!-- Comments -->
     <h5>Comments:</h5>
@@ -56,17 +63,19 @@
       </span>
     <% end %>
 
+    <% if logged_in? %>
     <h5>New Comment:</h5>
-    <%= form_with(model: [current_user, current_user.comments.build], local: true) do |form| %>
-      <span>
-            <%= form.label :message %>
-            <%= form.text_field :message, placeholder: "What a great story!", :required => true %> <br>
-            <%= hidden_field_tag 'post_title', @post.title %>
-            <%= hidden_field_tag 'post_username', @user.username %>
-        </span>
-        <p>
-            <%= form.submit "Share!", class: "btn btn-success" %>
-        </p>
+      <%= form_with(model: [current_user, current_user.comments.build], local: true) do |form| %>
+        <span>
+              <%= form.label :message %>
+              <%= form.text_field :message, placeholder: "What a great story!", :required => true %> <br>
+              <%= hidden_field_tag 'post_title', @post.title %>
+              <%= hidden_field_tag 'post_username', @user.username %>
+          </span>
+          <p>
+              <%= form.submit "Share!", class: "btn btn-success" %>
+          </p>
+      <% end %>
     <% end %>
     <%= button_to 'Get more inspired', stories_path, :method => :get, class: "btn btn-primary" %>
 

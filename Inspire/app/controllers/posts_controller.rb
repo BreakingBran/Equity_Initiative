@@ -6,7 +6,6 @@ class PostsController < ApplicationController
 		@user = User.find_by_username(params[:username])
 		@post = Post.create(post_params)
 		@user.posts << @post
-		#@post = @user.posts.create(post_params)
 
 		@post.verified = false
 		@post.num_likes = 0
@@ -23,7 +22,7 @@ class PostsController < ApplicationController
 			@user = User.find_by_username(params[:username])
 			@post = @user.posts.find_by_title(params[:post_title])
 		else
-			# To support old compatibility
+			# To support id paths
 			@user = User.find(params[:user_id])
 			@post = Post.find(params[:id])
 		end
@@ -48,6 +47,17 @@ class PostsController < ApplicationController
 
 	def destroy
 	end
+
+  # API methods
+  def addlike
+    if params[:post_title]
+      post = Post.find_by_title(params[:post_title])
+      post.num_likes += 1;
+      if post.save
+        redirect_to show_post_path(username: post.user.username, post_title: post.title) and return
+      end
+    end
+  end
 
 	private
     def post_params
