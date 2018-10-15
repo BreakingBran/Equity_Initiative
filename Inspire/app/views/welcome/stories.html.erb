@@ -11,25 +11,33 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Top Stories</a>
-      </li>
+      <% if logged_in? %>
+        <li class="nav-item">
+          Hey <%= current_user.first_name %>! | <%= link_to 'Log out', logout_path, method: :delete %>
+          | <%= link_to 'View Profile', user_show_path_url(username: current_user.username) %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Log in', root_path %>
+        </li>
+      <% end %>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <label><input class="form-control mr-sm-2" type="text" placeholder="Category"name="categor"></label>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <%= form_with scope: :filter, url: stories_filter_path, method: :get, html: {class: 'form-inline my-2 my-lg-0'} do |f| %>
+      <%= f.text_field :filter_string, required: true, placeholder: 'Category', class: 'form-control mr-sm-2', required: true %>
+
+      <%= f.submit "Search", class: "btn btn-outline-success" %>
+    <% end %>
   </div>
 </nav>
 <!-- End Nav Bar -->
 
 <div class="container">
+  <%= button_to "Have something to share?", new_post_path(username: current_user.username), method: :get, class: "btn btn-outline-primary float-right" %>
 	<% if @posts.present? %>
 		<h1 id="top_stories">Top Stories</h1>
-    <%= button_to "Have something to share?", new_user_post_url(user_id: @user.id), method: :get %>
     <br>
     <% @posts.each do |post| %>
-      <h3><%= link_to post.title, post_show_path_url(username: post.user.username, post_title: post.title) %></h3>
+      <h3><%= link_to post.title, show_post_path(username: post.user.username, post_title: post.title) %></h3>
       
       <!-- Add user Image -->
       <span>

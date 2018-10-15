@@ -3,14 +3,20 @@ class CommentController < ApplicationController
 	end
 
 	def create
-		@user = User.find(params[:user_id])
-		@comment = @user.comments.create(comment_params)
-		post_title = params[:post_title]
-		#@post = Post.find(params(["comment"]["post_id"])
-		@comment.save!
-		#@comment.user_id = @user.id
+		if params[:user_id] && params[:post_title]
+      @user = User.find(params[:user_id])
+      @post = Post.find_by_title(params[:post_title])
 
-		redirect_to post_show_path_url(username: @user.username, post_title: post_title)
+      @comment = Comment.create(comment_params)
+
+      @user.comments << @comment
+      @post.comments << @comment
+      @comment.save
+
+      redirect_to show_post_path(username: params[:post_username], post_title: @post.title)
+    else
+      flash[:error] = 'Something happened while creating the comment... Hand tight!'
+    end
 	end
 
 

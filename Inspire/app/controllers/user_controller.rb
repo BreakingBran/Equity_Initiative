@@ -8,10 +8,15 @@ class UserController < ApplicationController
 	def create
 		# Needs to be modified
 		@user = User.new(user_params)
-
-		@user.save
-    # redirect_to welcome_index
-    redirect_to stories_path
+    @user.save
+		if @user
+      # Testing only one session per computer so - if you create a new one just log out
+      if logged_in?
+        log_out
+      end
+      log_in(@user)
+      redirect_to stories_path
+    end
 	end
 
 	def new
@@ -19,12 +24,10 @@ class UserController < ApplicationController
 	end
 
 	def show
-		# Find User
-
     # Check if logged in
-    @logged_in = true
+    @logged_in = logged_in?
+
 		if (params[:username])
-			Rails.logger.debug(params[:username])
 			@user = User.find_by_username(params[:username])
 		else
 			@user = User.find(params[:id])
@@ -33,7 +36,7 @@ class UserController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		@user = current_user
 	end
 
 	def update
@@ -44,11 +47,10 @@ class UserController < ApplicationController
 	end
 
 	def destroy
-
 	end
 
 	private
   		def user_params
-			params.require(:user).permit(:usename, :password, :bio)
+			params.require(:user).permit(:first_name, :last_name, :username, :password, :bio)
 		end
 end

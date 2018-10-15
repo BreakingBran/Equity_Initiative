@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # Main Pages
 
   # Welcome Page
@@ -10,17 +9,24 @@ Rails.application.routes.draw do
   # User
   get '/profile/:username', to: 'user#show', as: 'user_show_path'
   get '/profile/:username/myprofile', to: 'user#show'
-  get '/login', to: 'user#login'
 
   # Posts
-  get '/post/:username/:post_title', to: 'posts#show', as: 'post_show_path'
+  get '/post/:username/:post_title', to: 'posts#show', as: 'show_post'
+  get '/new/:username', to: 'posts#new', as: 'new_post'
+  post 'create/:username', to: 'posts#create', as: 'create_post'
 
-  # Crud Routing
+  # Login/Sessionns
+  post '/login', to: 'sessions#create', as: 'login'
+  get '/login', to: 'sessions#new'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
 
-  # Special Create
+  # Self-defined Create
   post 'user', to: 'user#create', as: 'user_create'
   post '/user/:user_id/posts', to: 'posts#create', as: 'post_create'
   post '/user/:user_id/comments', to: 'comment#create', as: 'comment_create'
+
+  # API Logic
+  get '/stories/filter', to: 'welcome#filter', as: 'stories_filter'
 
   # Support CRUD operations
   resources :user do

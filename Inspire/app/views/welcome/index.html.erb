@@ -16,15 +16,29 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+        <% if logged_in? %>
+          <li class="nav-item">
+            Hey <%= current_user.first_name %>! | <%= link_to 'Log out', logout_path, method: :delete %>
+            | <%= link_to 'View Profile', user_show_path_url(username: current_user.username) %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Log in', root_path %>
+          </li>
+        <% end %>
         <li class="nav-item">
-          <a class="nav-link" href="#">Top Stories</a>
+          <a class="nav-link" href="/stories">Top Stories</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <label id="login_form"><input class="form-control mr-sm-2" type="text" placeholder="Username"name="usenanme"></label>
-        <label id="login_form"><input class="form-control mr-sm-2" type="text" placeholder="Password"name="usenanme"></label>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
-      </form>
+      <%= form_with scope: :session, url: login_path, html: {class: 'form-inline my-2 my-lg-0'} do |f| %>
+        <%= f.label :username %>
+        <%= f.text_field :username, class: 'form-control mr-sm-2', required: true %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control mr-sm-2', required: true %>
+
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </nav>
   <!-- End Nav Bar -->

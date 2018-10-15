@@ -7,14 +7,24 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <% if logged_in? %>
+        <li class="nav-item">
+          Hey <%= current_user.first_name %>! | <%= link_to 'Log out', logout_path, method: :delete %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Log in', root_path %>
+        </li>
+      <% end %>
       <li class="nav-item">
-        <a class="nav-link" href="#">Top Stories</a>
+        <a class="nav-link" href="/stories">Top Stories</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <label><input class="form-control mr-sm-2" type="text" placeholder="Category"name="categor"></label>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <%= form_with scope: :filter, url: stories_filter_path, method: :get, html: {class: 'form-inline my-2 my-lg-0'} do |f| %>
+      <%= f.text_field :filter_string, required: true, placeholder: 'Category', class: 'form-control mr-sm-2', required: true %>
+
+      <%= f.submit "Search", class: "btn btn-outline-success" %>
+    <% end %>
   </div>
 </nav>
 <!-- End Nav Bar -->
@@ -26,7 +36,9 @@
       <h1 class="display-4"><%= @post.title %></h1>
       <hr>
       <p><%= @post.category %></p>
-      <p class="lead"><%= 'Shared by: ' + @user.first_name + ' ' + @user.last_name %></p>
+      <p class="lead">
+        <%= link_to "Shared by: " + @post.user.first_name + ' ' + @post.user.last_name, user_show_path_url(username: @post.user.username) %>
+      </p>
     </div>
     <!-- End Jumbotron -->
 
@@ -34,29 +46,30 @@
 		<p><%= @post.message %></p>
 
     <!-- Comments -->
-    <h3>Comments:</h3>
-    <% @comments = @user.comments.all %>
+    <h5>Comments:</h5>
+    <% @comments = @post.comments.all %>
     <% @comments.each do |comment| %>
       <span>
-        <%= comment.user.first_name + comment.user.last_name %>
+        <%= comment.user.first_name + ' ' + comment.user.last_name %>
         <blockquote>| <%= comment.message %></blockquote>
         <br>
       </span>
     <% end %>
 
     <h5>New Comment:</h5>
-    <%= form_with(model: [@user, @user.comments.build], local: true) do |form| %>
+    <%= form_with(model: [current_user, current_user.comments.build], local: true) do |form| %>
       <span>
             <%= form.label :message %>
             <%= form.text_field :message, placeholder: "What a great story!", :required => true %> <br>
             <%= hidden_field_tag 'post_title', @post.title %>
+            <%= hidden_field_tag 'post_username', @user.username %>
         </span>
         <p>
-            <%= form.submit "Share!" %>
+            <%= form.submit "Share!", class: "btn btn-success" %>
         </p>
     <% end %>
-    <%= button_to 'Get more inspired', stories_path, :method => :get %>
-    
+    <%= button_to 'Get more inspired', stories_path, :method => :get, class: "btn btn-primary" %>
+
   <% else %>
     <h1>Unfortunately we cannot find this post</h1>
 	<% end %>

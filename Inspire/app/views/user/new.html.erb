@@ -33,13 +33,13 @@
     <%= form.label :password %>
     <%= form.password_field :password, placeholder: "password", title: "enter password here", :required => true %>
     <p>
-      <%= form.submit "Sign Up" %>
+      <%= form.submit "Sign Up", class: "btn btn-success" %>
     </p>
   <% end %>
 
-  <h4>
-    Already have an account? <%= button_to 'Click here to login!', welcome_path, :method => :get %>
-  </h4>
+  <h5>
+    Already have an account? <%= button_to 'Click here to login!', welcome_path, :method => :get, class: "btn btn-outline-primary" %>
+  </h5>
 </div>
 
 

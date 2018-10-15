@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_06_015756) do
+ActiveRecord::Schema.define(version: 2018_10_15_070307) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "message"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2018_05_06_015756) do
     t.string "username"
     t.string "password"
     t.string "last_name"
+    t.index ["username"], name: "index_users_on_username"
   end
 
   add_foreign_key "comments", "posts"
